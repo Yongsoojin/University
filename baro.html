@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        /*첫번째 ul 안에 들어 있는 모든 태그*/
+        .baro * {
+            text-decoration: none;
+            list-style-type: none;
+            font-size : 12.3px;
+        }
+
+        /*첫번째 ul를 감싸고 있는 div*/
+        .baro_div { 
+            width : 150px;
+            text-align: center;
+        }
+        
+        /*첫번째 ul*/
+        .baro {
+            position : relative;
+            top : 500px;
+            margin : 0;
+            padding : 0;
+        }
+
+        /*두 번째 ul*/
+        .baro_click {
+            /* position : absolute;
+            bottom : 30px;
+            margin : 0;
+            padding : 0;
+            width: 150px;
+            height : 200px;
+            overflow-y : scroll;
+            overflow-x : hidden; */
+            padding : 0;
+            width : 150px;
+            height : 200px;
+            overflow-y : scroll;
+            overflow-x : hidden;
+        }
+
+        /*두번째 ul(학과바로가기가 click되었을 때)안의 li*/
+        .baro_click > li {
+            width : 150px;
+            height : 20px;
+        }
+
+        /*두번째 ul(학과바로가기가 click되었을 때)안의 li>a*/
+        .baro_click > li > a {
+            color : white;
+            background-color: #748194;
+            display : block;
+            text-align: left;
+            padding-left : 10px;
+            line-height : 20px;
+        }
+
+        /*두번째 ul(학과바로가기가 click되었을 때)안의 li>a가 hover 되었을 때*/
+        .baro_click > li > a:hover, li {
+            background-color : #005499;
+        }
+
+        /*두번째 ul(학과바로가기가 click되었을 때)를 감싸고 있는 div*/
+        #gkrrhk {
+            position : absolute;
+            bottom : 30px;
+            width : 150px;
+            display : none;
+            overflow : hidden;
+        }
+
+        /*학과 바로가기 - li*/
+        .baro_li_first {
+            width : 150px;
+            height : 30px;
+        }
+
+        /*학과 바로가기 - li>a*/
+        .baro_li_first > a {
+            color : rgb(93, 93, 93);
+            background-color : #f0f1f5;
+            display : block;
+            text-align : left;
+            padding-left : 10px;
+            line-height: 30px;
+            font-size : 14px;
+        }
+
+        /*학과 바로가기 안의 화살표 모양이미지 - li>a>img*/
+        .baro_li_first > a > img {
+            width : 25px;
+            height : 25px;
+            float : right;
+            padding-top : 2.5px;
+            padding-right : 2px;
+        }
+
+    </style>
+    <script>
+
+        var i = 0;
+        function lookatme() {
+            var con = document.getElementById('gkrrhk');
+            if(i%2 == 0) {
+                con.style.display = 'block';
+                i++;
+            } else {
+                con.style.display = 'none';
+                i++;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div class="baro_div">
+        <ul class="baro">
+            <li class="baro_li_first"><a href="Javascript:void(0)" onclick="lookatme()"><img src="up_arrow.png">학과 바로가기</img></a>
+                <div id="gkrrhk">
+                    <ul class="baro_click">
+                        <li><a href="https://www.hywoman.ac.kr/knitfashiondesign/index.do" target="_blank">니트패션디자인학과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/crewriting/index.do" target="_blank">문예창작과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/pha/index.do" target="_blank">보건행정과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/ap/index.do" target="_blank">비서인재과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/bigdata/index.do" target="_blank">빅데이터과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/socialwelfare/index.do" target="_blank">사회복지과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/sandi/index.do" target="_blank">산업디자인과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/biz/index.do" target="_blank">서비스경영학과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/textile/index.do" target="_blank">섬유패션디자인과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/cera/index.do" target="_blank">세라믹다지인과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/taxacc/index.do" target="_blank">세무회계과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/computer/index.do" target="_blank">소프트웨어융합과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/IMan/index.do" target="_blank">스마트IT과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/sls/index.do" target="_blank">스포츠건강관리과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/sidi/index.do" target="_blank">시각미디어디자인과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/fn/index.do" target="_blank">식품영양과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/eng/index.do" target="_blank">실무영어과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/jp2440/index.do" target="_blank">실무일본어과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/nihao/index.do" target="_blank">실무중국어과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/music/index.do" target="_blank">실용음악과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/music/index.do" target="_blank">실용음악과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/media/index.do" target="_blank">영상콘텐츠과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/hyfs/index.do" target="_blank">외식산업과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/childhoodedu/index.do" target="_blank">유아교육과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/interior/index.do" target="_blank">인테리어디자인과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/dh/index.do" target="_blank">치위생과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/fashiondesign/index.do" target="_blank">패션디자인과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/airlineservice/index.do" target="_blank">항공과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/pubad/index.do" target="_blank">행정실무과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/tourism/index.do" target="_blank">호텔관광과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/ai/index.do" target="_blank">AI융합과</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/microtrack/index.do" target="_blank">융복합 마이크로 전공</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/hywuptech/index.do" target="_blank" title="P-TECH">고숙련일학습병행</a></li>
+                    </ul>
+                </div>
+            </li>
+                
+        </ul>
+    </div>
+    
+</body>
+</html>

@@ -10,6 +10,7 @@
         body {
             background-color: gray;
         }
+
         * {
             text-decoration: none;
             list-style : none;
@@ -19,7 +20,7 @@
             background-color: white;
             padding : 0 0 0 0;
             width : 180px;
-            height : 1000px;
+            height : 1200px;
             position : relative;
             display : block;
         }
@@ -38,13 +39,13 @@
         }
 
         .menu > li:not(:first-child) {
-            height: 49px;
+            height: 50px;
             width : 180px;
             line-height: 50px;
             /* border-bottom : 1px solid rgb(165, 165, 165); */
         }
 
-        .menu > li:not(:first-child):after {
+        .menu > li:not(:first-child, .not_submenu):after {
             content : "";
             display : block;
             width : 150px;
@@ -52,22 +53,31 @@
             margin-left : 15px;
         }
 
-        .menu li a {
+        .menu > li > a {
             display : block;
             color : black;
             font-weight: bold;
         }
 
-        .menu li:hover:not(.menu > li:first-child, .sub_submenu >li) {
+        .menu > li:hover:not(.menu > li:first-child, .sub_submenu >li, .submenu>li:first-child, .sub_submenu_first_child_a, .not_submenu) {
             background-color: #0071bd;
         }
 
-        .menu li:hover a {
+        .menu > li:hover:not(.not_submenu) > a {
             color : white;
         }
 
-        .menu li:hover .submenu{
+        .menu > li:hover .submenu{
             height : 100%;
+            /* border: 1px solid yellow; */
+        }
+        
+        .submenu > li:not(.submenu_first_child):hover {
+            background-color: #0071bd;
+        }
+
+        .submenu > li:first-child:hover .first_child_a {
+            background-color: #0071bd;
         }
 
         .submenu {
@@ -77,17 +87,43 @@
             /* margin : 0 0 0 0; */
             /* height : 100%; */
             width : 100%;
-            right : -180px;
+            left : 180px;
             top : 0px;
             overflow: hidden;
             height: 0;
             font-size : 14px;
+            font-weight: bold;
+        }
+        .submenu > li:first-child {
+            padding: 150px 0 0 0;
+            margin : 0;
         }
 
-        .submenu li a{
+        /* .submenu > li:first-child:hover .submenu>li:first-child>a {
+            border : 1px solid green;
+        } */
+        /* .submenu > li:first-child:hover .first_dropmenu {
+            background-color: #0071bd;
+        } */
+
+        .submenu > li > a{
             display : block;
             color : white;
+            text-align: left;
+            padding: 0 20px;
             /* font-weight: bold; */
+        }
+        
+        .sub_submenu > li:hover > a  {
+            /* background: red; */
+            color : #9fc6e9;
+        }
+
+        .sub_submenu > li > a {
+            display : block;
+            text-align: left;
+            padding : 0 0 0 20px;
+            color : white;
         }
 
         .iconimg {
@@ -108,7 +144,7 @@
             background-color : #003d76;
         }
 
-        .sub_submenu li {
+        .sub_submenu > li {
             overflow : hidden;
             width : 180px;
             height : 35px;
@@ -132,74 +168,226 @@
             height : 70px;
             line-height: 35px;
         }
-
-        .sub_submenu > li:hover >a {
-            color : #9fc6e9;
+        .ss_parent_175:hover .sub_submenu {
+            height : 175px;
+            line-height : 35px;
         }
+        .ss_parent_245:hover .sub_submenu {
+            height : 245px;
+            line-height: 35px;
+        }
+        
+        /*not_submenu*/
+
+        .not_submenu {
+            font-size : 0;
+            position: relative;
+        }
+
+        /* baro */
+
+        /*첫번째 ul 안에 들어 있는 모든 태그*/
+        .baro > * {
+            text-decoration: none;
+            list-style-type: none;
+            font-size : 12.3px;
+        }
+
+        /*학과 바로가기 - 첫번째 ul를 감싸고 있는 div*/
+        .baro_div { 
+            width : 150px;
+            text-align: center;
+            position : absolute;
+            bottom : 5px;
+            left : 15px;
+            border : 0.5px solid #e1e4eb;
+        }
+
+        /*기관 바로가기 - 첫번째 ul를 감싸고 있는 div*/
+        .baro_div2 {
+            width : 150px;
+            text-align : center;
+            position: absolute;
+            top : 0px;
+            left : 15px;
+            border : 0.5px solid #e1e4eb;
+        }
+        
+        /*첫번째 ul*/
+        .baro {
+            position : relative;
+            margin : 0;
+            padding : 0;
+        }
+
+        /*두 번째 ul*/
+        .baro_click {
+            padding : 0;
+            width : 150px;
+            height : 150px;
+            overflow-y : scroll;
+            overflow-x : hidden;
+        }
+
+        /*두번째 ul(학과바로가기가 click되었을 때)안의 li*/
+        .baro_click > li {
+            width : 150px;
+            height : 20px;
+        }
+
+        /*두번째 ul(학과바로가기가 click되었을 때)안의 li>a*/
+        .baro_click > li > a {
+            color : white;
+            background-color: #748194;
+            display : block;
+            text-align: left;
+            padding-left : 5px;
+            line-height : 20px;
+        }
+
+        /*두번째 ul(학과바로가기가 click되었을 때)안의 li>a가 hover 되었을 때*/
+        .baro_click > li > a:hover, .baro_click > li {
+            background-color : #005499;
+        }
+
+        /*학과 바로가기 - 두번째 ul(학과바로가기가 click되었을 때)를 감싸고 있는 div*/
+        #gkrrhk {
+            position : absolute;
+            bottom : 30px;
+            width : 150px;
+            display : none;
+            overflow : hidden;
+        }
+
+        /*기관 바로가기 - 두번째 ul(기관 바로가기가 click 되었을 때)를 감싸고 있는 div*/
+        #gkrrhk2 {
+            position : absolute;
+            bottom : 30px;
+            width : 150px;
+            display : none;
+            overflow : hidden;
+        }
+
+        /*학과 바로가기 - li*/
+        .baro_li_first {
+            width : 150px;
+            height : 30px;
+        }
+
+        /*학과 바로가기 - li>a*/
+        .baro_li_first > a {
+            color : rgb(93, 93, 93);
+            background-color : #f0f1f5;
+            display : block;
+            text-align : left;
+            padding-left : 10px;
+            line-height: 30px;
+            font-size : 14px;
+        }
+
+        /*학과 바로가기 안의 화살표 모양이미지 - li>a>img*/
+        .baro_li_first > a > img {
+            width : 25px;
+            height : 25px;
+            float : right;
+            padding-top : 2.5px;
+            padding-right : 2px;
+        }
+
+        /*학교사랑 발전기금 img태그를 감싸고 있는 div태그*/
+        .baro_down_img {
+            margin : 0;
+            padding : 0;
+            position: relative;
+            width : 150px;
+            height : 70.59px;
+            left : 15px;
+            bottom : 15px;
+            overflow: hidden;
+        }
+
+        /*학교사랑 발전기금 img태그*/
+        .baro_down_img > a > img {
+            margin : 0;
+            padding : 0;
+            right : 0px;
+            position: absolute;
+            width : 100%;
+            height : auto;  
+        }
+
+        /*발전기금 밑에 있는 개인정보 글들을 감싸고 있는 div태그*/
+        .other_list {
+            border : 1px solid red;
+        }
+
+        /*발전기금 밑에 있는 개인정보 글들을 감싸고 있는 div>ul태그*/
+        .other_list > ul {
+            margin : 0;
+            padding : 0;
+            border : 1px solid yellow;
+        }
+
+        /*발전기금 밑에 있는 개인정보 글들을 감싸고 있는 div>ul>li*/
+        .other_list > ul > li {
+            list-style-type : square;
+            margin-left : 25px;
+            width : 150px;
+            height : 20px;
+        }
+
+        /*발전기금 밑에 있는 개인정보 글들을 감싸고 있는 div>ul>li>a*/
+        .other_list > ul > li > a {
+            font-size: 12.5px;
+            line-height: 20px;
+            display : block;
+            text-align: left;
+        }
+
+        /*발전기금 밑에 있는 개인정보 글들 중 7번째제외한 a들*/
+        .other_list > ul > li > a:not(.other_color_li>a) {
+            color : #666666;
+        }
+
+        /*발전기금 밑에 있는 개인정보 글증 중 7번째 제외, a가 hover 되었을 떄*/
+        .other_list > ul > li:not(.other_color_li) > a:hover {
+            color : #00467f;
+            font-weight: bold;
+        }
+
+        /*발전기금 밑에 있는 개인정보 글들중 갈색으로 색이 고정된 li*/
+        .other_color_li > a {
+            color : #893234;
+            font-weight: bold;
+        }
+
     </style>
-    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('.a-1').hide();
 
-            $('.a').mouseover(function() {
-                $('.a-1').slideDown();
-            });
-            $('.a').mouseleave(function() {
-                $('.a-1').hide();
-            });
-        });
-        $(document).ready(function() {
-            $('.b-1').hide();
+        var i = 0;
+        function lookatme() {
+            var con = document.getElementById('gkrrhk');
+            if(i%2 == 0) {
+                con.style.display = 'block';
+                i++;
+            } else {
+                con.style.display = 'none';
+                i++;
+            }
+        }
+        var a = 0;
+        function lookatme2() {
+            var con = document.getElementById('gkrrhk2');
+            if(a%2 == 0) {
+                con.style.display = 'block';
+                a++;
+            } else {
+                con.style.display = 'none';
+                a++;
+            }
+        }
 
-            $('.b').mouseover(function() {
-                $('.b-1').slideDown();
-            });
-            $('.b').mouseleave(function() {
-                $('.b-1').hide();
-            });
-        });
-        $(document).ready(function() {
-            $('.c-1').hide();
-
-            $('.c').mouseover(function() {
-                $('.c-1').slideDown();
-            });
-            $('.c').mouseleave(function() {
-                $('.c-1').hide();
-            });
-        });
-        $(document).ready(function() {
-            $('.d-1').hide();
-
-            $('.d').mouseover(function() {
-                $('.d-1').slideDown();
-            });
-            $('.d').mouseleave(function() {
-                $('.d-1').hide();
-            });
-        });
-        $(document).ready(function() {
-            $('.e-1').hide();
-
-            $('.e').mouseover(function() {
-                $('.e-1').slideDown();
-            });
-            $('.e').mouseleave(function() {
-                $('.e-1').hide();
-            });
-        });
-        $(document).ready(function() {
-            $('.f-1').hide();
-
-            $('.f').mouseover(function() {
-                $('.f-1').slideDown();
-            });
-            $('.f').mouseleave(function() {
-                $('.f-1').hide();
-            });
-        });
-    </script> -->
+    </script>
 </head>
 <body>
     <div>
@@ -207,47 +395,47 @@
             <li class="special"><a href="https://www.hywoman.ac.kr/ko/index.do"><img src="hanyang_icon.jpg" class="iconimg"></img></a></li>
             <li><a href="#">대학소개</a>
                 <ul class="submenu">
-                    <li><a href="https://www.hanyang.ac.kr/web/www/hanyang-foundation">학교법인 한양학원</a></li>
+                    <li class="submenu_first_child"><a class="first_child_a" href="https://www.hanyang.ac.kr/web/www/hanyang-foundation">학교법인 한양학원</a></li>
                     <li class="ss_parent_210"><a href="#">대학비전</a>
                         <ul class="sub_submenu">
-                            <li><a href="#">건학정신</a></li>
-                            <li><a href="#">대학사명선언문</a></li>
-                            <li><a href="#">설립자 메시지</a></li>
-                            <li><a href="#">이사장 말씀</a></li>
-                            <li><a href="#">대학상징</a></li>
-                            <li><a href="#">대학발전사</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=1876">건학정신</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=393">대학사명선언문</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=391">설립자 메시지</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=390">이사장 말씀</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=389">대학상징</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=1054">대학발전사</a></li>
                         </ul>
                     </li>
                     <li class="ss_parent_140"><a href="#">총장실</a>
                         <ul class="sub_submenu">
-                            <li><a href="#">총장인사말</a></li>
-                            <li><a href="#">약력 및 경력</a></li>
-                            <li><a href="#">역대총장</a></li>
-                            <li><a href="#">열린총장실</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2259">총장인사말</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=380">약력 및 경력</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=379">역대총장</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=2816">열린총장실</a></li>
                         </ul>
                     </li>
                     <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2578">대학기관</a></li>
                     <li class="ss_parent_105"><a href="#">대학규정</a>
                         <ul class="sub_submenu">
-                            <li><a href="#">규정집</a></li>
-                            <li><a href="#">규정제/개정안내</a></li>
-                            <li><a href="#">윤리헌장</a></li>
+                            <li><a href="https://gw.hywoman.ac.kr/ekp/ruleweb/index.do">규정집</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=344">규정제/개정안내</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=343">윤리헌장</a></li>
                         </ul>
                     </li>
                     <li class="ss_parent_210"><a href="#">캠퍼스안내</a>
                         <ul class="sub_submenu">
-                            <li><a href="#">찾아오시는 길</a></li>
-                            <li><a href="#">캠퍼스맵</a></li>
-                            <li><a href="#">VR캠퍼스맵</a></li>
-                            <li><a href="#">셔틀버스시간표</a></li>
-                            <li><a href="#">전화번호안내</a></li>
-                            <li><a href="#">시설대관안내</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=1062">찾아오시는 길</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2760">캠퍼스맵</a></li>
+                            <li><a href="http://vr2.dreamvrad.net/hywu/">VR캠퍼스맵</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=337">셔틀버스시간표</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_MJ11_CON/CM_MJ11_L01.do?MENU_SN=335">전화번호안내</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=334">시설대관안내</a></li>
                         </ul>
                     </li>
                     <li class="ss_parent_70"><a href="#">발전기금</a>
                         <ul class="sub_submenu">
-                            <li><a href="#">기금안내</a></li>
-                            <li><a href="#">온라인안내</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2381">기금안내</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_GV01_CON/CM_GV01_C01.do?MENU_SN=2380">온라인안내</a></li>
                         </ul>
                     </li>
                     <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=2083">대학 홍보영상</a></li>
@@ -255,77 +443,282 @@
             </li>
             <li><a href="#">VISON 2030+</a>
                 <ul class="submenu">
-                    <li><a href="#">교육 목표/교육 목적</a></li>
-                    <li><a href="#">비전과 미래</a></li>
+                    <li class="submenu_first_child"><a class="first_child_a" href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2770">교육 목표/교육 목적</a></li>
+                    <li class="ss_parent_175"><a href="#">비전과 미래</a>
+                        <ul class="sub_submenu">
+                            <li><a class="sub_submenu_first_child_a" href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2772">VISON 2030+</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2775">핵심가치 및 핵심역량</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2774">중점전략 및 핵심과제</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2773">혁신지원사업 방향</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2825">특성화 방향</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
             <li><a href="https://www.hywoman.ac.kr/hyw_admission/index.do">입학안내</a>
             </li>
             <li><a href="#">학과안내</a>
                 <ul class="submenu">
-                    <li><a href="#">학과소개</a></li>
-                    <li><a href="#">학사학위전공심화과정</a></li>
-                    <li><a href="#">융복합 마이크로 전공</a></li>
-                    <li><a href="#">고숙련일학습병행(P-TECH)</a></li>
+                    <li class="submenu_first_child"><a class="first_child_a" href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2780">학과소개</a></li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2289">학사학위전공심화과정</a></li>
+                    <li><a href="https://www.hywoman.ac.kr/microtrack/index.do">융복합 마이크로 전공</a></li>
+                    <li><a href="https://www.hywoman.ac.kr/hywuptech/index.do" title="P-TECH">고숙련일학습병행</a></li>
                 </ul>
             </li>
             <li><a href="#">대학생활</a>
                 <ul class="submenu">
-                    <li><a href="#">학사일정</a></li>
-                    <li><a href="#">학사안내</a></li>
-                    <li><a href="#">장학제도</a></li>
-                    <li><a href="#">사회봉사</a></li>
-                    <li><a href="#">국제교류</a></li>
-                    <li><a href="#">비교과프로그램</a></li>
-                    <li><a href="#">진로취업지원센터</a></li>
-                    <li><a href="#">학생이력관리시스템</a></li>
-                    <li><a href="#">대학생활상담센터</a></li>
-                    <li><a href="#">학생활동</a></li>
-                    <li><a href="#">장애학생 지원</a></li>
-                    <li><a href="#">증명서발급</a></li>
-                    <li><a href="#">강의실안내(캠퍼스맵)</a></li>
-                    <li><a href="#">시설안내</a></li>
+                    <li class="submenu_first_child"><a class="first_child_a" href="https://www.hywoman.ac.kr/ko/cms/CM_SH01_CON/CM_SH01_L01.do?MENU_SN=282#">학사일정</a></li>
+                    <li class="ss_parent_245"><a href="#">학사안내</a>
+                        <ul class="sub_submenu">
+                            <li><a class="sub_submenu_first_child_a" href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=281">학적변동</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2068">조기취업</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2069">출석인정제</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=280">시험유급학사경고</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=279">교원자격취득(교직)</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=276">연계편입협약대학</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=275">등록금 납부 및 환불 관련 FAQ</a></li>
+                        </ul>
+                    </li>
+                    <li class="ss_parent_70"><a href="#">장학제도</a>
+                    <ul class="sub_submenu">
+                        <li><a class="sub_submenu_first_child_a" href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=287">장학제도안내</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=286">장학금신청안내</a></li>
+                    </ul>
+                    </li>
+                    <li class="ss_parent_140"><a href="#">사회봉사</a>
+                    <ul class="sub_submenu">
+                        <li><a class="sub_submenu_first_child_a" href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=291">사회봉사과목소개</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2171">해외봉사</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=289">유학생튜터제도</a></li>
+                        <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=288">동행프로그램</a></li>
+                    </ul>
+                    </li>
+                    <li class="ss_parent_140"><a href="#">국제교류</a>
+                        <ul class="sub_submenu">
+                            <li><a class="sub_submenu_first_child_a" href="https://www.hywoman.ac.kr/studyinhyw/cms/CM_CN01_CON/index.do?MENU_SN=679">해외자매대학</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=305">해외대학 학점인정</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/studyinhyw/cms/CM_CN01_CON/index.do?MENU_SN=675">해외 어학연수</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/studyinhyw/cms/CM_CN01_CON/index.do?MENU_SN=1816">해외 현장실습</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=2799">비교과프로그램</a></li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2811">진로취업지원센터</a></li>
+                    <li><a href="https://cms.hywoman.ac.kr/">학생이력관리시스템</a></li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2087">대학생활상담센터</a></li>
+                    <li class="ss_parent_105"><a href="#">학생활동</a>
+                        <ul class="sub_submenu">
+                            <li><a class="sub_submenu_first_child_a" href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=311">총학생회</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=314">동아리</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=309">총동문회</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=1886">장애학생 지원</a></li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=268">증명서발급</a></li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2760">강의실안내(캠퍼스맵)</a></li>
+                    <li class="ss_parent_245"><a href="#">시설안내</a>
+                        <ul class="sub_submenu">
+                            <li><a class="sub_submenu_first_child_a" href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=321">도서관</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=323">미술관</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=319">보건실</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=318">학생휴게실</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_ML01_CON/CM_ML01_V01.do?MENU_SN=329">식당</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=326">기타시설안내</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=315">주차장</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
             <li><a href="#">열린광장</a>
                 <ul class="submenu">
-                    <li><a href="#">공지사항</a></li>
-                    <li><a href="#">대학소식</a></li>
-                    <li><a href="#">정보공개</a></li>
-                    <li><a href="#">교직원마당</a></li>
-                    <li><a href="#">주요위원회</a></li>
-                    <li><a href="#">서식자료실</a></li>
-                    <li><a href="#">행원게시판</a></li>
-                    <li><a href="#">재택수업 자유게시판</a></li>
-                    <li><a href="#">온라인문의</a></li>
-                    <li><a href="#">재택수업 sw 문의</a></li>
-                    <li><a href="#">온라인 공청회</a></li>
-                    <li><a href="#">코로나19 대응 게시판</a></li>
+                    <li  class="submenu_first_child" class="ss_parent_245"><a class="first_child_a" href="#">공지사항</a>
+                        <ul class="sub_submenu">
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=264">공통,일반</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=266">교무, 학사</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=265">장학, 학자금</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=263">입찰공고</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=262">행정공지</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=1702">청탁금지법</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=1918">개인정보제공내역</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=1728">대학소식</a></li>
+                    <li class="ss_parent_140"><a href="#">정보공개</a>
+                        <ul class="sub_submenu">
+                            <li><a class="sub_submenu_first_child_a" href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=260">정보공개제도안내</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=259">정보공개청구</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=2218">업무추진비 사용내역</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2818">비공개대상정보</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=250">교직원마당</a></li>
+                    <li class="ss_parent_105"><a href="#">주요위원회</a>
+                        <ul class="sub_submenu">
+                            <li><a class="sub_submenu_first_child_a" href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=2795">대학평의원회 회의록</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/pop/CM_CN01_CON/index.do?MENU_SN=1710">등록금심의위원회 회의록</a></li>
+                            <li><a href="https://www.hanyang.ac.kr/web/www/hanyang-foundation">이사회 회의록</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=255">서식자료실</a></li>
+                    <li class="ss_parent_70"><a href="#">행원게시판</a>
+                        <ul class="sub_submenu">
+                            <li><a class="sub_submenu_first_child_a" href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=253">게시판운영규정</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=254">자유게시판</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=2374">재택수업 자유게시판</a></li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=251">온라인문의</a></li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=2401">재택수업 sw 문의</a></li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=251">온라인 공청회</a></li>
+                    <li class="ss_parent_70"><a href="#">코로나19 대응 게시판</a>
+                        <ul class="sub_submenu">
+                            <li><a class="sub_submenu_first_child_a" href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=2933">대학 대처방안</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=2934">감염병 예방 수칙</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
-            <li><a href="#">열린광장</a>
+            <li><a href="#">정보서비스</a>
                 <ul class="submenu">
-                    <li><a href="#">하이유포털</a></li>
-                    <li><a href="#">수강신청</a></li>
-                    <li><a href="#">e-class System</a></li>
-                    <li><a href="#">학생이력관리시스템</a></li>
-                    <li><a href="#">e-포트폴리오 시스템</a></li>
-                    <li><a href="#">현장실습지원시스템</a></li>
-                    <li><a href="#">증명서발급센터</a></li>
-                    <li><a href="#">그룹웨어(전자결제)</a></li>
-                    <li><a href="#">재정지원사업포털</a></li>
-                    <li><a href="#">교수학습지원센터</a></li>
-                    <li><a href="#">사설망 접근 방침</a></li>
-                    <li><a href="#">교내 Wi-Fi 접속 방법</a></li>
-                    <li><a href="#">원격지원</a></li>
-                    <li><a href="#">개인정보처리방침</a></li>
+                    <li class="submenu_first_child"><a class="first_child_a" href="https://sso.hywoman.ac.kr/svc/tk/Auth.do?id=POT&ac=Y&RelayState=%2Findex.jsp&ifa=N&">하이유포털</a></li>
+                    <li><a href="https://sugang.hywoman.ac.kr/nx/">수강신청</a></li>
+                    <li><a href="https://lms.hywoman.ac.kr/ilos/main/main_form.acl">e-class System</a></li>
+                    <li><a href="https://cms.hywoman.ac.kr/">학생이력관리시스템</a></li>
+                    <li><a href="https://efolio.hywoman.ac.kr/talp/member/login_form.acl">e-포트폴리오 시스템</a></li>
+                    <li><a href="https://prac.hywoman.ac.kr/">현장실습지원시스템</a></li>
+                    <li><a href="https://uni.webminwon.com/servlet/WMINDEX?COMMAND=ACTIVEX&GIWANNO=021186">증명서발급센터</a></li>
+                    <li><a href="https://sso.hywoman.ac.kr/svc/tk/Auth.do?ac=Y&RelayState=%2Fekp%2Fportal%2Fmain.do&ifa=N&id=GW&">그룹웨어(전자결제)</a></li>
+                    <li><a href="https://gfp.hywoman.ac.kr/">재정지원사업포털</a></li>
+                    <li><a href="https://ctl.hywoman.ac.kr/ctl/main/main_form.acl">교수학습지원센터</a></li>
+                    <li class="ss_parent_105"><a href="#">사설망 접근 방침</a>
+                        <ul class="sub_submenu">
+                            <li><a href="https://www.hywoman.ac.kr/infocomms/cms/CM_BB01_CON/CM_BB01_V01.do?MENU_SN=708&BBS_SN=423121">VPN사용안내(교직원)</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2246">VPN사용안내(외부인)</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2245">서버접근안내</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2957">교내 Wi-Fi 접속 방법</a></li>
+                    <li><a href="https://737.co.kr/">원격지원</a></li>
+                    <li class="ss_parent_70"><a href="#">개인정보처리방침</a>
+                        <ul class="sub_submenu">
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2817">개인정보처리방침</a></li>
+                            <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=1413">영상청보처리기기 운영관리 방침</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_BB01_CON/CM_BB01_L01.do?MENU_SN=2858">정보보안지침</a></li>
+                    <li><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2756">MS오피스 365 안내</a></li>
                 </ul>
             </li>
-            <li><a href="#">VR 캠퍼스 맵</a></li>
-            <li><a href="#">바로가기</a></li>
-            <li><a href="#">기타정보</a></li>
+            <li><a href="https://www.hywoman.ac.kr/vr_map/index.html">VR 캠퍼스 맵</a></li>
+            <li class="not_submenu">바로가기_학과
+                <div class="baro_div">
+                    <ul class="baro">
+                        <li class="baro_li_first"><a href="Javascript:void(0)" onclick="lookatme()"><img src="up_arrow.png">학과 바로가기</img></a>
+                            <div id="gkrrhk">
+                                <ul class="baro_click">
+                                    <li><a href="https://www.hywoman.ac.kr/knitfashiondesign/index.do" target="_blank">니트패션디자인학과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/crewriting/index.do" target="_blank">문예창작과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/pha/index.do" target="_blank">보건행정과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/ap/index.do" target="_blank">비서인재과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/bigdata/index.do" target="_blank">빅데이터과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/socialwelfare/index.do" target="_blank">사회복지과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/sandi/index.do" target="_blank">산업디자인과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/biz/index.do" target="_blank">서비스경영학과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/textile/index.do" target="_blank">섬유패션디자인과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/cera/index.do" target="_blank">세라믹다지인과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/taxacc/index.do" target="_blank">세무회계과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/computer/index.do" target="_blank">소프트웨어융합과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/IMan/index.do" target="_blank">스마트IT과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/sls/index.do" target="_blank">스포츠건강관리과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/sidi/index.do" target="_blank">시각미디어디자인과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/fn/index.do" target="_blank">식품영양과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/eng/index.do" target="_blank">실무영어과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/jp2440/index.do" target="_blank">실무일본어과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/nihao/index.do" target="_blank">실무중국어과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/music/index.do" target="_blank">실용음악과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/music/index.do" target="_blank">실용음악과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/media/index.do" target="_blank">영상콘텐츠과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/hyfs/index.do" target="_blank">외식산업과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/childhoodedu/index.do" target="_blank">유아교육과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/interior/index.do" target="_blank">인테리어디자인과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/dh/index.do" target="_blank">치위생과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/fashiondesign/index.do" target="_blank">패션디자인과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/airlineservice/index.do" target="_blank">항공과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/pubad/index.do" target="_blank">행정실무과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/tourism/index.do" target="_blank">호텔관광과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/ai/index.do" target="_blank">AI융합과</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/microtrack/index.do" target="_blank">융복합 마이크로 전공</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/hywuptech/index.do" target="_blank" title="P-TECH">고숙련일학습병행</a></li>
+                                </ul>
+                            </div>
+                        </li>   
+                    </ul>
+                </div>
+            </li>
+            <li class="not_submenu">바로가기_기관
+                <div class="baro_div2">
+                    <ul class="baro">
+                        <li class="baro_li_first"><a href="Javascript:void(0)" onclick="lookatme2()"><img src="up_arrow.png">기관 바로가기</img></a>
+                            <div id="gkrrhk2">
+                                <ul class="baro_click">
+                                    <li><a href="https://www.hywoman.ac.kr/hywu01/index.do" target="_blank">교무처</a></li>
+                                    <li><a href="https://ctl.hywoman.ac.kr/ctl/main/main_form.acl" target="_blank">교수학습개발센터</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/ncs/index.do" target="_blank">교육과정혁신센터</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/eeic/index.do" target="_blank">교육환경개선센터</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/studyinhyw/index.do" target="_blank">국제협력실</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/hywu03/index.do" target="_blank">기획조정처</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/ick/index.do" target="_blank">니트연구소</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/counsel/index.do" target="_blank">대학생활상담센터</a></li>
+                                    <li><a href="https://library.hywoman.ac.kr/" target="_blank">도서관</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/dual/index.do" target="_blank" title="일학습병행통합공동훈련센터">일학습병행훈련센터</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/hyw_youth/index.do" target="_blank">만리포 청소년수련회</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/artmuseum/index.do" target="_blank">미술관</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/hywu04/index.do" target="_blank">사무처</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/hywvolunteer/index.do" target="_blank">사회봉사단</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/dc/index.do" target="_blank">산학디자인센터</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/rnd/index.do" target="_blank">산학협력단</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/iacg/index.do" target="_blank">산학협력처</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/lifejob/index.do" target="_blank">서울직업교육거점센터</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/ics/index.do" target="_blank">세라믹연구소</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/sirl/index.do" target="_blank">소셜혁신연구소</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/rifle/index.do" target="_blank">외국어교육센터</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/anp/index.do" target="_blank">입학홍보실</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/infocomms/index.do" target="_blank">정보통신원</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/hywu02/cms/CM_CN01_CON/index.do?MENU_SN=2746" target="_blank">진로취업지원센터</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/alumni/index.do" target="_blank">총동창회</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/studentcouncil/index.do" target="_blank">총학생회</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/longlife/index.do" target="_blank">평생교육원</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/hywu02/index.do" target="_blank">학생복지처</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/klec/index.do" target="_blank">한국어교육센터</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/health/index.do" target="_blank">행원보건센터</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/innovation/index.do" target="_blank">혁신지원사업단</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/fitness/index.do" target="_blank">휘트니스센터</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/eidi/index.do" target="_blank">AI융합혁신센터</a></li>
+                                    <li><a href="https://www.hywoman.ac.kr/hwumedia/index.do" target="_blank">HYWU미디어센터</a></li>
+                                    <li><a href="http://hywlincplus.com/html/index/index.php" target="_blank">LINC+</a></li>
+                                </ul>
+                            </div>
+                        </li>   
+                    </ul>
+                </div>
+            </li>
+            <div class="baro_down_img"><a href="https://www.hywoman.ac.kr/ko/cms/CM_CN01_CON/index.do?MENU_SN=2381" target="_blank"><img src="baro_down_img.png"></a></div>
+            <div class="other_list">
+                <ul>
+                    <li><a href="https://www.academyinfo.go.kr/popup/pubinfo1690/list.do?schlId=0000554" target="_blank">대학정보공시</a></li>
+                    <li><a href="#">예결산공고</a></li>
+                    <li><a href="#">자체평가 보고서</a></li>
+                    <li><a href="#">그룹웨어, 교직원웹메일</a></li>
+                    <li><a href="#">입찰공고</a></li>
+                    <li><a href="#">청탁금지법</a></li>
+                    <li class="other_color_li"><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">개인정보목적외이용, 제공</a></li>
+                    <li><a href="#">한국연구자정보(KRI)</a></li>
+                </ul>
+            </div>
         </ul>
     </div>
     
+    
 </body>
 </html>
+
